@@ -4,44 +4,8 @@ A student-built Cyber Threat Intelligence (CTI) platform designed to collect, an
 This project integrates Python (backend) and React + TypeScript (frontend) with modular components for scanning, monitoring, and reporting cyber threats.
 
 # 📂 Project Structure
-project/
-│── app.py                  # Flask/FastAPI entry point
 
-│── requirements.txt         # Python dependencies
-
-│── package.json             # Frontend dependencies
-
-│── vite.config.ts           # Vite configuration for React
-
-│── tailwind.config.js       # Tailwind CSS configuration
-
-│── static/                  # CSS & JS assets
-
-│── templates/               # HTML templates (Jinja2)
-
-│── modules/                 # Core CTI modules
-
-│   ├── file_scanner.py
-
-│   ├── url_scanner.py
-
-
-│   ├── usb_monitor.py
-
-│   ├── threat_database.py
-
-│   └── report_generator.py
-
-│── src/                     # React frontend
-
-│   ├── main.tsx
-
-│   ├── App.tsx
-
-│   └── components/
-
-│       └── Dashboard.tsx
-
+<img width="808" height="643" alt="image" src="https://github.com/user-attachments/assets/a5d905a2-512c-4063-bac1-515af00f0f37" />
 
 
 # ⚡ Features
