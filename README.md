@@ -3,6 +3,7 @@
 A student-built Cyber Threat Intelligence (CTI) platform designed to collect, analyze, and visualize security threat data.
 This project integrates Python (backend) and React + TypeScript (frontend) with modular components for scanning, monitoring, and reporting cyber threats.
 
+
 # 📂 Project Structure
 
 <img width="808" height="643" alt="image" src="https://github.com/user-attachments/assets/a5d905a2-512c-4063-bac1-515af00f0f37" />
