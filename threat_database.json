@@ -1,0 +1,214 @@
+{
+  "url_scans": [
+    {
+      "id": "c19c4186",
+      "url": "https://sraap.in/",
+      "result": {
+        "url": "https://sraap.in/",
+        "timestamp": "2025-08-24T14:14:14.866536",
+        "status": "threat",
+        "threats": [
+          "Suspicious JavaScript detected: <script"
+        ],
+        "details": {
+          "status_code": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "server": "hcdn",
+          "content_length": 4455,
+          "ip_address": "147.79.69.94"
+        },
+        "reputation": 30,
+        "ssl_valid": true,
+        "redirects": 0,
+        "response_time": 149,
+        "content_analysis": {
+          "scripts": 5,
+          "forms": 0,
+          "iframes": 0,
+          "external_links": 1,
+          "suspicious_functions": 5
+        },
+        "dns_info": {
+          "A": [
+            "88.222.243.122",
+            "147.79.69.94"
+          ],
+          "MX": [
+            "10 mx2.hostinger.com.",
+            "5 mx1.hostinger.com."
+          ],
+          "NS": [
+            "ns2.dns-parking.com.",
+            "ns1.dns-parking.com."
+          ]
+        },
+        "whois_info": {
+          "registrar": "GoDaddy.com, LLC",
+          "creation_date": "[datetime.datetime(2023, 1, 17, 5, 55, 26, 704000), datetime.datetime(2023, 1, 17, 5, 55, 26)]",
+          "country": "IN"
+        },
+        "open_ports": [
+          {
+            "port": 80,
+            "service": "http",
+            "state": "open"
+          },
+          {
+            "port": 443,
+            "service": "https",
+            "state": "open"
+          }
+        ],
+        "scan_id": "c19c4186"
+      },
+      "timestamp": "2025-08-24T14:14:19.790256"
+    },
+    {
+      "id": "2da8b053",
+      "url": "https://trymata.com/",
+      "result": {
+        "url": "https://trymata.com/",
+        "timestamp": "2025-08-24T14:16:09.061564",
+        "status": "threat",
+        "threats": [
+          "Suspicious JavaScript detected: document.write",
+          "Suspicious JavaScript detected: <script",
+          "Suspicious JavaScript detected: onclick=",
+          "Suspicious JavaScript detected: onload=",
+          "Suspicious JavaScript detected: onerror=",
+          "Suspicious JavaScript detected: location.href",
+          "Potential phishing site detected",
+          "Potential malware pattern: unescape\\s*\\("
+        ],
+        "details": {
+          "status_code": 200,
+          "content_type": "text/html; charset=UTF-8",
+          "server": "cloudflare",
+          "content_length": 253385,
+          "ip_address": "104.21.60.13"
+        },
+        "reputation": 0,
+        "ssl_valid": true,
+        "redirects": 0,
+        "response_time": 1151,
+        "content_analysis": {
+          "scripts": 61,
+          "forms": 0,
+          "iframes": 1,
+          "external_links": 266,
+          "suspicious_functions": 87
+        },
+        "dns_info": {
+          "A": [
+            "172.67.186.217",
+            "104.21.60.13"
+          ],
+          "MX": [
+            "10 alt4.aspmx.l.google.com.",
+            "5 alt1.aspmx.l.google.com.",
+            "5 alt2.aspmx.l.google.com.",
+            "1 aspmx.l.google.com.",
+            "10 alt3.aspmx.l.google.com."
+          ],
+          "NS": [
+            "rohin.ns.cloudflare.com.",
+            "liv.ns.cloudflare.com."
+          ]
+        },
+        "whois_info": {
+          "registrar": "GoDaddy.com, LLC",
+          "creation_date": "[datetime.datetime(2022, 8, 26, 23, 23, 18), datetime.datetime(2022, 8, 26, 18, 23, 18)]",
+          "country": "US"
+        },
+        "open_ports": [
+          {
+            "port": 80,
+            "service": "http",
+            "state": "open"
+          },
+          {
+            "port": 443,
+            "service": "https",
+            "state": "open"
+          },
+          {
+            "port": 8080,
+            "service": "unknown",
+            "state": "open"
+          },
+          {
+            "port": 8443,
+            "service": "unknown",
+            "state": "open"
+          }
+        ],
+        "scan_id": "2da8b053"
+      },
+      "timestamp": "2025-08-24T14:16:15.745341"
+    },
+    {
+      "id": "de5d9c43",
+      "url": "https://www.instagram.com/",
+      "result": {
+        "url": "https://www.instagram.com/",
+        "timestamp": "2025-08-24T14:18:59.356342",
+        "status": "threat",
+        "threats": [
+          "Suspicious JavaScript detected: <script",
+          "Potential phishing site detected"
+        ],
+        "details": {
+          "status_code": 200,
+          "content_type": "text/html; charset=\"utf-8\"",
+          "server": "unknown",
+          "content_length": 407863,
+          "ip_address": "163.70.140.174"
+        },
+        "reputation": 0,
+        "ssl_valid": true,
+        "redirects": 0,
+        "response_time": 486,
+        "content_analysis": {
+          "scripts": 77,
+          "forms": 0,
+          "iframes": 0,
+          "external_links": 109,
+          "suspicious_functions": 77
+        },
+        "dns_info": {
+          "A": [
+            "163.70.140.174"
+          ],
+          "MX": [],
+          "NS": []
+        },
+        "whois_info": {
+          "registrar": "RegistrarSafe, LLC",
+          "creation_date": "2004-06-04 13:37:18",
+          "country": "US"
+        },
+        "open_ports": [
+          {
+            "port": 80,
+            "service": "http",
+            "state": "open"
+          },
+          {
+            "port": 443,
+            "service": "https",
+            "state": "open"
+          }
+        ]
+      },
+      "timestamp": "2025-08-24T14:19:05.050134"
+    }
+  ],
+  "file_scans": [],
+  "usb_scans": [],
+  "statistics": {
+    "total_scans": 3,
+    "threats_detected": 11,
+    "clean_files": 0,
+    "open_ports_found": 8
+  }
+}

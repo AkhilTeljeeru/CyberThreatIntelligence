@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTI Platform - Cyber Threat Intelligence</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">🛡️</div>
+                    <h1>CyberGuard CTI</h1>
+                </div>
+                <div class="status-indicator">
+                    <div class="status-dot"></div>
+                    <span>System Online</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav-container">
+            <div class="nav-desktop">
+                <button class="nav-btn active" data-tab="dashboard">
+                    <span class="nav-icon">📊</span>
+                    <span>Dashboard</span>
+                </button>
+                <button class="nav-btn" data-tab="url-scanner">
+                    <span class="nav-icon">🔍</span>
+                    <span>URL Scanner</span>
+                </button>
+                <button class="nav-btn" data-tab="file-scanner">
+                    <span class="nav-icon">📁</span>
+                    <span>File Scanner</span>
+                </button>
+                <button class="nav-btn" data-tab="usb-monitor">
+                    <span class="nav-icon">💾</span>
+                    <span>USB Monitor</span>
+                </button>
+                <button class="nav-btn" data-tab="reports">
+                    <span class="nav-icon">📄</span>
+                    <span>Reports</span>
+                </button>
+            </div>
+            
+            <div class="nav-mobile">
+                <button class="nav-btn-mobile active" data-tab="dashboard">
+                    <span class="nav-icon">📊</span>
+                    <span>Dashboard</span>
+                </button>
+                <button class="nav-btn-mobile" data-tab="url-scanner">
+                    <span class="nav-icon">🔍</span>
+                    <span>URL</span>
+                </button>
+                <button class="nav-btn-mobile" data-tab="file-scanner">
+                    <span class="nav-icon">📁</span>
+                    <span>Files</span>
+                </button>
+                <button class="nav-btn-mobile" data-tab="usb-monitor">
+                    <span class="nav-icon">💾</span>
+                    <span>USB</span>
+                </button>
+                <button class="nav-btn-mobile" data-tab="reports">
+                    <span class="nav-icon">📄</span>
+                    <span>Reports</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Tab -->
+            <div id="dashboard" class="tab-content active">
+                <div class="welcome-section">
+                    <h2>Threat Intelligence Dashboard</h2>
+                    <p>Real-time monitoring and analysis of your security posture</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon blue">📊</div>
+                            <div class="stat-change positive">+12%</div>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="total-scans">Loading...</h3>
+                            <p>Total Scans Today</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon red">⚠️</div>
+                            <div class="stat-change negative">-5%</div>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="threats-detected">Loading...</h3>
+                            <p>Threats Detected</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon green">🛡️</div>
+                            <div class="stat-change positive">+8%</div>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="clean-files">Loading...</h3>
+                            <p>Clean Files</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon yellow">🌐</div>
+                            <div class="stat-change neutral">+2%</div>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="open-ports">Loading...</h3>
+                            <p>Open Ports Found</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h3>⚠️ Recent Threats</h3>
+                        </div>
+                        <div class="card-content">
+                            <div id="recent-threats">Loading...</div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h3>📊 System Status</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="system-status">
+                                <div class="status-item">
+                                    <span>Real-time Protection</span>
+                                    <div class="status-indicator-small active">Active</div>
+                                </div>
+                                <div class="status-item">
+                                    <span>Firewall Status</span>
+                                    <div class="status-indicator-small active">Enabled</div>
+                                </div>
+                                <div class="status-item">
+                                    <span>USB Monitoring</span>
+                                    <div class="status-indicator-small" id="usb-monitoring-status">Inactive</div>
+                                </div>
+                                <div class="status-item">
+                                    <span>Database Updates</span>
+                                    <div class="status-indicator-small active">Updated</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- URL Scanner Tab -->
+            <div id="url-scanner" class="tab-content">
+                <div class="welcome-section">
+                    <h2>🔍 URL Threat Scanner</h2>
+                    <p>Analyze URLs for malware, phishing, and security vulnerabilities</p>
+                </div>
+
+                <div class="scanner-card">
+                    <div class="scanner-form">
+                        <div class="form-group">
+                            <label for="url-input">Enter URL to scan</label>
+                            <div class="input-group">
+                                <input type="url" id="url-input" placeholder="https://example.com">
+                                <button id="scan-url-btn" class="btn btn-primary">
+                                    <span class="btn-icon">🔍</span>
+                                    <span>Scan URL</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="url-progress" class="progress-section" style="display: none;">
+                    <div class="progress-content">
+                        <div class="progress-spinner"></div>
+                        <div>
+                            <h3>Scanning in progress...</h3>
+                            <p id="url-progress-text">Analyzing URL for threats and vulnerabilities</p>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="url-progress-fill"></div>
+                    </div>
+                </div>
+
+                <div id="url-results" class="results-section" style="display: none;">
+                    <!-- URL scan results will be populated here -->
+                </div>
+            </div>
+
+            <!-- File Scanner Tab -->
+            <div id="file-scanner" class="tab-content">
+                <div class="welcome-section">
+                    <h2>📁 File Malware Scanner</h2>
+                    <p>Upload and analyze files for malware and security threats</p>
+                </div>
+
+                <div class="scanner-card">
+                    <div class="file-upload-area" id="file-upload-area">
+                        <div class="upload-content">
+                            <div class="upload-icon">📁</div>
+                            <h3>Drop files here or click to browse</h3>
+                            <p>Supported formats: All file types (Max 50MB)</p>
+                            <input type="file" id="file-input" accept="*/*" style="display: none;">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="file-progress" class="progress-section" style="display: none;">
+                    <div class="progress-content">
+                        <div class="progress-spinner"></div>
+                        <div>
+                            <h3>Scanning file...</h3>
+                            <p id="file-progress-text">Analyzing file for malware and threats</p>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="file-progress-fill"></div>
+                    </div>
+                </div>
+
+                <div id="file-results" class="results-section" style="display: none;">
+                    <!-- File scan results will be populated here -->
+                </div>
+            </div>
+
+            <!-- USB Monitor Tab -->
+            <div id="usb-monitor" class="tab-content">
+                <div class="welcome-section">
+                    <h2>💾 USB Device Monitor</h2>
+                    <p>Monitor and scan USB devices for threats and malware</p>
+                </div>
+
+                <div class="usb-controls">
+                    <button id="start-usb-monitor" class="btn btn-primary">
+                        <span class="btn-icon">▶️</span>
+                        <span>Start Monitoring</span>
+                    </button>
+                    <button id="stop-usb-monitor" class="btn btn-secondary" style="display: none;">
+                        <span class="btn-icon">⏹️</span>
+                        <span>Stop Monitoring</span>
+                    </button>
+                </div>
+
+                <div class="usb-grid">
+                    <div class="usb-card">
+                        <div class="card-header">
+                            <h3>💾 Connected Devices</h3>
+                        </div>
+                        <div class="card-content">
+                            <div id="connected-devices">No USB devices detected</div>
+                        </div>
+                    </div>
+
+                    <div class="usb-card">
+                        <div class="card-header">
+                            <h3>📋 Recent Activity</h3>
+                        </div>
+                        <div class="card-content">
+                            <div id="usb-activity">No recent USB activity</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="usb-scan-results" class="results-section" style="display: none;">
+                    <!-- USB scan results will be populated here -->
+                </div>
+            </div>
+
+            <!-- Reports Tab -->
+            <div id="reports" class="tab-content">
+                <div class="welcome-section">
+                    <h2>📄 Security Reports</h2>
+                    <p>View and download comprehensive security reports</p>
+                </div>
+
+                <div class="reports-section">
+                    <div class="reports-header">
+                        <h3>Available Reports</h3>
+                        <button id="refresh-reports" class="btn btn-secondary">
+                            <span class="btn-icon">🔄</span>
+                            <span>Refresh</span>
+                        </button>
+                    </div>
+                    
+                    <div id="reports-list" class="reports-list">
+                        Loading reports...
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
