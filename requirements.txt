@@ -2,6 +2,8 @@ whois>=0.9.27
 psutil>=6.0.0
 watchdog>=4.0.0
 reportlab>=4.2.2
+python-magic>=0.4.27
+
 
 
 Flask==3.0.3
