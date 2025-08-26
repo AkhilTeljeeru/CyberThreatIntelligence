@@ -244,5 +244,4 @@ def handle_disconnect():
 
 if __name__ == '__main__':
     print("Starting CTI Platform...")
-    print("Dashboard will be available at: http://localhost:5000")
     socketio.run(app, debug=True, host='0.0.0.0', port=5000)
