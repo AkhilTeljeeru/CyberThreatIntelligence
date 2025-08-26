@@ -3,8 +3,5 @@ services:
     name: cti-platform
     env: python
     plan: free
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "python main.py"
-    envVars:
-      - key: PYTHON_VERSION
-        value: 3.12.5
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --worker-class eventlet -w 1 -b 0.0.0.0:$PORT app:app
